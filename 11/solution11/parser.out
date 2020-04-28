@@ -1,0 +1,729 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statements
+Rule 2     statements -> statements statement
+Rule 3     statements -> statement
+Rule 4     statement -> assignment
+Rule 5     statement -> operation
+Rule 6     statement -> function
+Rule 7     statement -> runfunction
+Rule 8     statement -> class
+Rule 9     assignment -> VARIABLE . VARIABLE = VARIABLE
+Rule 10    assignment -> VARIABLE = VARIABLE ( string , numbers )
+Rule 11    string -> ' VARIABLE '
+Rule 12    numbers -> numbers , NUMBER
+Rule 13    numbers -> NUMBER
+Rule 14    operation -> VARIABLE . VARIABLE = VARIABLE . VARIABLE + VARIABLE
+Rule 15    function -> DEF VARIABLE ( variables ) { statements RETURN VARIABLE }
+Rule 16    function -> DEF VARIABLE ( variables ) { statements }
+Rule 17    variables -> variables , VARIABLE
+Rule 18    variables -> VARIABLE
+Rule 19    runfunction -> VARIABLE ( variables )
+Rule 20    runfunction -> VARIABLE . VARIABLE ( numbers )
+Rule 21    runfunction -> VARIABLE . VARIABLE ( )
+Rule 22    class -> CLASS VARIABLE { functions }
+Rule 23    functions -> functions function
+Rule 24    functions -> function
+
+Terminals, with rules where they appear
+
+'                    : 11 11
+(                    : 10 15 16 19 20 21
+)                    : 10 15 16 19 20 21
++                    : 14
+,                    : 10 12 17
+.                    : 9 14 14 20 21
+=                    : 9 10 14
+CLASS                : 22
+DEF                  : 15 16
+NUMBER               : 12 13
+RETURN               : 15
+VARIABLE             : 9 9 9 10 10 11 14 14 14 14 14 15 15 16 17 18 19 20 20 21 21 22
+error                : 
+{                    : 15 16 22
+}                    : 15 16 22
+
+Nonterminals, with rules where they appear
+
+assignment           : 4
+class                : 8
+function             : 6 23 24
+functions            : 22 23
+numbers              : 10 12 20
+operation            : 5
+program              : 0
+runfunction          : 7
+statement            : 2 3
+statements           : 1 2 15 16
+string               : 10
+variables            : 15 16 17 19
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statements
+    (2) statements -> . statements statement
+    (3) statements -> . statement
+    (4) statement -> . assignment
+    (5) statement -> . operation
+    (6) statement -> . function
+    (7) statement -> . runfunction
+    (8) statement -> . class
+    (9) assignment -> . VARIABLE . VARIABLE = VARIABLE
+    (10) assignment -> . VARIABLE = VARIABLE ( string , numbers )
+    (14) operation -> . VARIABLE . VARIABLE = VARIABLE . VARIABLE + VARIABLE
+    (15) function -> . DEF VARIABLE ( variables ) { statements RETURN VARIABLE }
+    (16) function -> . DEF VARIABLE ( variables ) { statements }
+    (19) runfunction -> . VARIABLE ( variables )
+    (20) runfunction -> . VARIABLE . VARIABLE ( numbers )
+    (21) runfunction -> . VARIABLE . VARIABLE ( )
+    (22) class -> . CLASS VARIABLE { functions }
+
+    VARIABLE        shift and go to state 9
+    DEF             shift and go to state 10
+    CLASS           shift and go to state 11
+
+    program                        shift and go to state 1
+    statements                     shift and go to state 2
+    statement                      shift and go to state 3
+    assignment                     shift and go to state 4
+    operation                      shift and go to state 5
+    function                       shift and go to state 6
+    runfunction                    shift and go to state 7
+    class                          shift and go to state 8
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statements .
+    (2) statements -> statements . statement
+    (4) statement -> . assignment
+    (5) statement -> . operation
+    (6) statement -> . function
+    (7) statement -> . runfunction
+    (8) statement -> . class
+    (9) assignment -> . VARIABLE . VARIABLE = VARIABLE
+    (10) assignment -> . VARIABLE = VARIABLE ( string , numbers )
+    (14) operation -> . VARIABLE . VARIABLE = VARIABLE . VARIABLE + VARIABLE
+    (15) function -> . DEF VARIABLE ( variables ) { statements RETURN VARIABLE }
+    (16) function -> . DEF VARIABLE ( variables ) { statements }
+    (19) runfunction -> . VARIABLE ( variables )
+    (20) runfunction -> . VARIABLE . VARIABLE ( numbers )
+    (21) runfunction -> . VARIABLE . VARIABLE ( )
+    (22) class -> . CLASS VARIABLE { functions }
+
+    $end            reduce using rule 1 (program -> statements .)
+    VARIABLE        shift and go to state 9
+    DEF             shift and go to state 10
+    CLASS           shift and go to state 11
+
+    statement                      shift and go to state 12
+    assignment                     shift and go to state 4
+    operation                      shift and go to state 5
+    function                       shift and go to state 6
+    runfunction                    shift and go to state 7
+    class                          shift and go to state 8
+
+state 3
+
+    (3) statements -> statement .
+
+    VARIABLE        reduce using rule 3 (statements -> statement .)
+    DEF             reduce using rule 3 (statements -> statement .)
+    CLASS           reduce using rule 3 (statements -> statement .)
+    $end            reduce using rule 3 (statements -> statement .)
+    RETURN          reduce using rule 3 (statements -> statement .)
+    }               reduce using rule 3 (statements -> statement .)
+
+
+state 4
+
+    (4) statement -> assignment .
+
+    VARIABLE        reduce using rule 4 (statement -> assignment .)
+    DEF             reduce using rule 4 (statement -> assignment .)
+    CLASS           reduce using rule 4 (statement -> assignment .)
+    $end            reduce using rule 4 (statement -> assignment .)
+    RETURN          reduce using rule 4 (statement -> assignment .)
+    }               reduce using rule 4 (statement -> assignment .)
+
+
+state 5
+
+    (5) statement -> operation .
+
+    VARIABLE        reduce using rule 5 (statement -> operation .)
+    DEF             reduce using rule 5 (statement -> operation .)
+    CLASS           reduce using rule 5 (statement -> operation .)
+    $end            reduce using rule 5 (statement -> operation .)
+    RETURN          reduce using rule 5 (statement -> operation .)
+    }               reduce using rule 5 (statement -> operation .)
+
+
+state 6
+
+    (6) statement -> function .
+
+    VARIABLE        reduce using rule 6 (statement -> function .)
+    DEF             reduce using rule 6 (statement -> function .)
+    CLASS           reduce using rule 6 (statement -> function .)
+    $end            reduce using rule 6 (statement -> function .)
+    RETURN          reduce using rule 6 (statement -> function .)
+    }               reduce using rule 6 (statement -> function .)
+
+
+state 7
+
+    (7) statement -> runfunction .
+
+    VARIABLE        reduce using rule 7 (statement -> runfunction .)
+    DEF             reduce using rule 7 (statement -> runfunction .)
+    CLASS           reduce using rule 7 (statement -> runfunction .)
+    $end            reduce using rule 7 (statement -> runfunction .)
+    RETURN          reduce using rule 7 (statement -> runfunction .)
+    }               reduce using rule 7 (statement -> runfunction .)
+
+
+state 8
+
+    (8) statement -> class .
+
+    VARIABLE        reduce using rule 8 (statement -> class .)
+    DEF             reduce using rule 8 (statement -> class .)
+    CLASS           reduce using rule 8 (statement -> class .)
+    $end            reduce using rule 8 (statement -> class .)
+    RETURN          reduce using rule 8 (statement -> class .)
+    }               reduce using rule 8 (statement -> class .)
+
+
+state 9
+
+    (9) assignment -> VARIABLE . . VARIABLE = VARIABLE
+    (10) assignment -> VARIABLE . = VARIABLE ( string , numbers )
+    (14) operation -> VARIABLE . . VARIABLE = VARIABLE . VARIABLE + VARIABLE
+    (19) runfunction -> VARIABLE . ( variables )
+    (20) runfunction -> VARIABLE . . VARIABLE ( numbers )
+    (21) runfunction -> VARIABLE . . VARIABLE ( )
+
+    .               shift and go to state 13
+    =               shift and go to state 14
+    (               shift and go to state 15
+
+
+state 10
+
+    (15) function -> DEF . VARIABLE ( variables ) { statements RETURN VARIABLE }
+    (16) function -> DEF . VARIABLE ( variables ) { statements }
+
+    VARIABLE        shift and go to state 16
+
+
+state 11
+
+    (22) class -> CLASS . VARIABLE { functions }
+
+    VARIABLE        shift and go to state 17
+
+
+state 12
+
+    (2) statements -> statements statement .
+
+    VARIABLE        reduce using rule 2 (statements -> statements statement .)
+    DEF             reduce using rule 2 (statements -> statements statement .)
+    CLASS           reduce using rule 2 (statements -> statements statement .)
+    $end            reduce using rule 2 (statements -> statements statement .)
+    RETURN          reduce using rule 2 (statements -> statements statement .)
+    }               reduce using rule 2 (statements -> statements statement .)
+
+
+state 13
+
+    (9) assignment -> VARIABLE . . VARIABLE = VARIABLE
+    (14) operation -> VARIABLE . . VARIABLE = VARIABLE . VARIABLE + VARIABLE
+    (20) runfunction -> VARIABLE . . VARIABLE ( numbers )
+    (21) runfunction -> VARIABLE . . VARIABLE ( )
+
+    VARIABLE        shift and go to state 18
+
+
+state 14
+
+    (10) assignment -> VARIABLE = . VARIABLE ( string , numbers )
+
+    VARIABLE        shift and go to state 19
+
+
+state 15
+
+    (19) runfunction -> VARIABLE ( . variables )
+    (17) variables -> . variables , VARIABLE
+    (18) variables -> . VARIABLE
+
+    VARIABLE        shift and go to state 20
+
+    variables                      shift and go to state 21
+
+state 16
+
+    (15) function -> DEF VARIABLE . ( variables ) { statements RETURN VARIABLE }
+    (16) function -> DEF VARIABLE . ( variables ) { statements }
+
+    (               shift and go to state 22
+
+
+state 17
+
+    (22) class -> CLASS VARIABLE . { functions }
+
+    {               shift and go to state 23
+
+
+state 18
+
+    (9) assignment -> VARIABLE . VARIABLE . = VARIABLE
+    (14) operation -> VARIABLE . VARIABLE . = VARIABLE . VARIABLE + VARIABLE
+    (20) runfunction -> VARIABLE . VARIABLE . ( numbers )
+    (21) runfunction -> VARIABLE . VARIABLE . ( )
+
+    =               shift and go to state 24
+    (               shift and go to state 25
+
+
+state 19
+
+    (10) assignment -> VARIABLE = VARIABLE . ( string , numbers )
+
+    (               shift and go to state 26
+
+
+state 20
+
+    (18) variables -> VARIABLE .
+
+    )               reduce using rule 18 (variables -> VARIABLE .)
+    ,               reduce using rule 18 (variables -> VARIABLE .)
+
+
+state 21
+
+    (19) runfunction -> VARIABLE ( variables . )
+    (17) variables -> variables . , VARIABLE
+
+    )               shift and go to state 27
+    ,               shift and go to state 28
+
+
+state 22
+
+    (15) function -> DEF VARIABLE ( . variables ) { statements RETURN VARIABLE }
+    (16) function -> DEF VARIABLE ( . variables ) { statements }
+    (17) variables -> . variables , VARIABLE
+    (18) variables -> . VARIABLE
+
+    VARIABLE        shift and go to state 20
+
+    variables                      shift and go to state 29
+
+state 23
+
+    (22) class -> CLASS VARIABLE { . functions }
+    (23) functions -> . functions function
+    (24) functions -> . function
+    (15) function -> . DEF VARIABLE ( variables ) { statements RETURN VARIABLE }
+    (16) function -> . DEF VARIABLE ( variables ) { statements }
+
+    DEF             shift and go to state 10
+
+    functions                      shift and go to state 30
+    function                       shift and go to state 31
+
+state 24
+
+    (9) assignment -> VARIABLE . VARIABLE = . VARIABLE
+    (14) operation -> VARIABLE . VARIABLE = . VARIABLE . VARIABLE + VARIABLE
+
+    VARIABLE        shift and go to state 32
+
+
+state 25
+
+    (20) runfunction -> VARIABLE . VARIABLE ( . numbers )
+    (21) runfunction -> VARIABLE . VARIABLE ( . )
+    (12) numbers -> . numbers , NUMBER
+    (13) numbers -> . NUMBER
+
+    )               shift and go to state 34
+    NUMBER          shift and go to state 35
+
+    numbers                        shift and go to state 33
+
+state 26
+
+    (10) assignment -> VARIABLE = VARIABLE ( . string , numbers )
+    (11) string -> . ' VARIABLE '
+
+    '               shift and go to state 37
+
+    string                         shift and go to state 36
+
+state 27
+
+    (19) runfunction -> VARIABLE ( variables ) .
+
+    VARIABLE        reduce using rule 19 (runfunction -> VARIABLE ( variables ) .)
+    DEF             reduce using rule 19 (runfunction -> VARIABLE ( variables ) .)
+    CLASS           reduce using rule 19 (runfunction -> VARIABLE ( variables ) .)
+    $end            reduce using rule 19 (runfunction -> VARIABLE ( variables ) .)
+    RETURN          reduce using rule 19 (runfunction -> VARIABLE ( variables ) .)
+    }               reduce using rule 19 (runfunction -> VARIABLE ( variables ) .)
+
+
+state 28
+
+    (17) variables -> variables , . VARIABLE
+
+    VARIABLE        shift and go to state 38
+
+
+state 29
+
+    (15) function -> DEF VARIABLE ( variables . ) { statements RETURN VARIABLE }
+    (16) function -> DEF VARIABLE ( variables . ) { statements }
+    (17) variables -> variables . , VARIABLE
+
+    )               shift and go to state 39
+    ,               shift and go to state 28
+
+
+state 30
+
+    (22) class -> CLASS VARIABLE { functions . }
+    (23) functions -> functions . function
+    (15) function -> . DEF VARIABLE ( variables ) { statements RETURN VARIABLE }
+    (16) function -> . DEF VARIABLE ( variables ) { statements }
+
+    }               shift and go to state 40
+    DEF             shift and go to state 10
+
+    function                       shift and go to state 41
+
+state 31
+
+    (24) functions -> function .
+
+    }               reduce using rule 24 (functions -> function .)
+    DEF             reduce using rule 24 (functions -> function .)
+
+
+state 32
+
+    (9) assignment -> VARIABLE . VARIABLE = VARIABLE .
+    (14) operation -> VARIABLE . VARIABLE = VARIABLE . . VARIABLE + VARIABLE
+
+    VARIABLE        reduce using rule 9 (assignment -> VARIABLE . VARIABLE = VARIABLE .)
+    DEF             reduce using rule 9 (assignment -> VARIABLE . VARIABLE = VARIABLE .)
+    CLASS           reduce using rule 9 (assignment -> VARIABLE . VARIABLE = VARIABLE .)
+    $end            reduce using rule 9 (assignment -> VARIABLE . VARIABLE = VARIABLE .)
+    RETURN          reduce using rule 9 (assignment -> VARIABLE . VARIABLE = VARIABLE .)
+    }               reduce using rule 9 (assignment -> VARIABLE . VARIABLE = VARIABLE .)
+    .               shift and go to state 42
+
+
+state 33
+
+    (20) runfunction -> VARIABLE . VARIABLE ( numbers . )
+    (12) numbers -> numbers . , NUMBER
+
+    )               shift and go to state 43
+    ,               shift and go to state 44
+
+
+state 34
+
+    (21) runfunction -> VARIABLE . VARIABLE ( ) .
+
+    VARIABLE        reduce using rule 21 (runfunction -> VARIABLE . VARIABLE ( ) .)
+    DEF             reduce using rule 21 (runfunction -> VARIABLE . VARIABLE ( ) .)
+    CLASS           reduce using rule 21 (runfunction -> VARIABLE . VARIABLE ( ) .)
+    $end            reduce using rule 21 (runfunction -> VARIABLE . VARIABLE ( ) .)
+    RETURN          reduce using rule 21 (runfunction -> VARIABLE . VARIABLE ( ) .)
+    }               reduce using rule 21 (runfunction -> VARIABLE . VARIABLE ( ) .)
+
+
+state 35
+
+    (13) numbers -> NUMBER .
+
+    )               reduce using rule 13 (numbers -> NUMBER .)
+    ,               reduce using rule 13 (numbers -> NUMBER .)
+
+
+state 36
+
+    (10) assignment -> VARIABLE = VARIABLE ( string . , numbers )
+
+    ,               shift and go to state 45
+
+
+state 37
+
+    (11) string -> ' . VARIABLE '
+
+    VARIABLE        shift and go to state 46
+
+
+state 38
+
+    (17) variables -> variables , VARIABLE .
+
+    )               reduce using rule 17 (variables -> variables , VARIABLE .)
+    ,               reduce using rule 17 (variables -> variables , VARIABLE .)
+
+
+state 39
+
+    (15) function -> DEF VARIABLE ( variables ) . { statements RETURN VARIABLE }
+    (16) function -> DEF VARIABLE ( variables ) . { statements }
+
+    {               shift and go to state 47
+
+
+state 40
+
+    (22) class -> CLASS VARIABLE { functions } .
+
+    VARIABLE        reduce using rule 22 (class -> CLASS VARIABLE { functions } .)
+    DEF             reduce using rule 22 (class -> CLASS VARIABLE { functions } .)
+    CLASS           reduce using rule 22 (class -> CLASS VARIABLE { functions } .)
+    $end            reduce using rule 22 (class -> CLASS VARIABLE { functions } .)
+    RETURN          reduce using rule 22 (class -> CLASS VARIABLE { functions } .)
+    }               reduce using rule 22 (class -> CLASS VARIABLE { functions } .)
+
+
+state 41
+
+    (23) functions -> functions function .
+
+    }               reduce using rule 23 (functions -> functions function .)
+    DEF             reduce using rule 23 (functions -> functions function .)
+
+
+state 42
+
+    (14) operation -> VARIABLE . VARIABLE = VARIABLE . . VARIABLE + VARIABLE
+
+    VARIABLE        shift and go to state 48
+
+
+state 43
+
+    (20) runfunction -> VARIABLE . VARIABLE ( numbers ) .
+
+    VARIABLE        reduce using rule 20 (runfunction -> VARIABLE . VARIABLE ( numbers ) .)
+    DEF             reduce using rule 20 (runfunction -> VARIABLE . VARIABLE ( numbers ) .)
+    CLASS           reduce using rule 20 (runfunction -> VARIABLE . VARIABLE ( numbers ) .)
+    $end            reduce using rule 20 (runfunction -> VARIABLE . VARIABLE ( numbers ) .)
+    RETURN          reduce using rule 20 (runfunction -> VARIABLE . VARIABLE ( numbers ) .)
+    }               reduce using rule 20 (runfunction -> VARIABLE . VARIABLE ( numbers ) .)
+
+
+state 44
+
+    (12) numbers -> numbers , . NUMBER
+
+    NUMBER          shift and go to state 49
+
+
+state 45
+
+    (10) assignment -> VARIABLE = VARIABLE ( string , . numbers )
+    (12) numbers -> . numbers , NUMBER
+    (13) numbers -> . NUMBER
+
+    NUMBER          shift and go to state 35
+
+    numbers                        shift and go to state 50
+
+state 46
+
+    (11) string -> ' VARIABLE . '
+
+    '               shift and go to state 51
+
+
+state 47
+
+    (15) function -> DEF VARIABLE ( variables ) { . statements RETURN VARIABLE }
+    (16) function -> DEF VARIABLE ( variables ) { . statements }
+    (2) statements -> . statements statement
+    (3) statements -> . statement
+    (4) statement -> . assignment
+    (5) statement -> . operation
+    (6) statement -> . function
+    (7) statement -> . runfunction
+    (8) statement -> . class
+    (9) assignment -> . VARIABLE . VARIABLE = VARIABLE
+    (10) assignment -> . VARIABLE = VARIABLE ( string , numbers )
+    (14) operation -> . VARIABLE . VARIABLE = VARIABLE . VARIABLE + VARIABLE
+    (15) function -> . DEF VARIABLE ( variables ) { statements RETURN VARIABLE }
+    (16) function -> . DEF VARIABLE ( variables ) { statements }
+    (19) runfunction -> . VARIABLE ( variables )
+    (20) runfunction -> . VARIABLE . VARIABLE ( numbers )
+    (21) runfunction -> . VARIABLE . VARIABLE ( )
+    (22) class -> . CLASS VARIABLE { functions }
+
+    VARIABLE        shift and go to state 9
+    DEF             shift and go to state 10
+    CLASS           shift and go to state 11
+
+    statements                     shift and go to state 52
+    statement                      shift and go to state 3
+    assignment                     shift and go to state 4
+    operation                      shift and go to state 5
+    function                       shift and go to state 6
+    runfunction                    shift and go to state 7
+    class                          shift and go to state 8
+
+state 48
+
+    (14) operation -> VARIABLE . VARIABLE = VARIABLE . VARIABLE . + VARIABLE
+
+    +               shift and go to state 53
+
+
+state 49
+
+    (12) numbers -> numbers , NUMBER .
+
+    )               reduce using rule 12 (numbers -> numbers , NUMBER .)
+    ,               reduce using rule 12 (numbers -> numbers , NUMBER .)
+
+
+state 50
+
+    (10) assignment -> VARIABLE = VARIABLE ( string , numbers . )
+    (12) numbers -> numbers . , NUMBER
+
+    )               shift and go to state 54
+    ,               shift and go to state 44
+
+
+state 51
+
+    (11) string -> ' VARIABLE ' .
+
+    ,               reduce using rule 11 (string -> ' VARIABLE ' .)
+
+
+state 52
+
+    (15) function -> DEF VARIABLE ( variables ) { statements . RETURN VARIABLE }
+    (16) function -> DEF VARIABLE ( variables ) { statements . }
+    (2) statements -> statements . statement
+    (4) statement -> . assignment
+    (5) statement -> . operation
+    (6) statement -> . function
+    (7) statement -> . runfunction
+    (8) statement -> . class
+    (9) assignment -> . VARIABLE . VARIABLE = VARIABLE
+    (10) assignment -> . VARIABLE = VARIABLE ( string , numbers )
+    (14) operation -> . VARIABLE . VARIABLE = VARIABLE . VARIABLE + VARIABLE
+    (15) function -> . DEF VARIABLE ( variables ) { statements RETURN VARIABLE }
+    (16) function -> . DEF VARIABLE ( variables ) { statements }
+    (19) runfunction -> . VARIABLE ( variables )
+    (20) runfunction -> . VARIABLE . VARIABLE ( numbers )
+    (21) runfunction -> . VARIABLE . VARIABLE ( )
+    (22) class -> . CLASS VARIABLE { functions }
+
+    RETURN          shift and go to state 55
+    }               shift and go to state 56
+    VARIABLE        shift and go to state 9
+    DEF             shift and go to state 10
+    CLASS           shift and go to state 11
+
+    statement                      shift and go to state 12
+    assignment                     shift and go to state 4
+    operation                      shift and go to state 5
+    function                       shift and go to state 6
+    runfunction                    shift and go to state 7
+    class                          shift and go to state 8
+
+state 53
+
+    (14) operation -> VARIABLE . VARIABLE = VARIABLE . VARIABLE + . VARIABLE
+
+    VARIABLE        shift and go to state 57
+
+
+state 54
+
+    (10) assignment -> VARIABLE = VARIABLE ( string , numbers ) .
+
+    VARIABLE        reduce using rule 10 (assignment -> VARIABLE = VARIABLE ( string , numbers ) .)
+    DEF             reduce using rule 10 (assignment -> VARIABLE = VARIABLE ( string , numbers ) .)
+    CLASS           reduce using rule 10 (assignment -> VARIABLE = VARIABLE ( string , numbers ) .)
+    $end            reduce using rule 10 (assignment -> VARIABLE = VARIABLE ( string , numbers ) .)
+    RETURN          reduce using rule 10 (assignment -> VARIABLE = VARIABLE ( string , numbers ) .)
+    }               reduce using rule 10 (assignment -> VARIABLE = VARIABLE ( string , numbers ) .)
+
+
+state 55
+
+    (15) function -> DEF VARIABLE ( variables ) { statements RETURN . VARIABLE }
+
+    VARIABLE        shift and go to state 58
+
+
+state 56
+
+    (16) function -> DEF VARIABLE ( variables ) { statements } .
+
+    VARIABLE        reduce using rule 16 (function -> DEF VARIABLE ( variables ) { statements } .)
+    DEF             reduce using rule 16 (function -> DEF VARIABLE ( variables ) { statements } .)
+    CLASS           reduce using rule 16 (function -> DEF VARIABLE ( variables ) { statements } .)
+    $end            reduce using rule 16 (function -> DEF VARIABLE ( variables ) { statements } .)
+    }               reduce using rule 16 (function -> DEF VARIABLE ( variables ) { statements } .)
+    RETURN          reduce using rule 16 (function -> DEF VARIABLE ( variables ) { statements } .)
+
+
+state 57
+
+    (14) operation -> VARIABLE . VARIABLE = VARIABLE . VARIABLE + VARIABLE .
+
+    VARIABLE        reduce using rule 14 (operation -> VARIABLE . VARIABLE = VARIABLE . VARIABLE + VARIABLE .)
+    DEF             reduce using rule 14 (operation -> VARIABLE . VARIABLE = VARIABLE . VARIABLE + VARIABLE .)
+    CLASS           reduce using rule 14 (operation -> VARIABLE . VARIABLE = VARIABLE . VARIABLE + VARIABLE .)
+    $end            reduce using rule 14 (operation -> VARIABLE . VARIABLE = VARIABLE . VARIABLE + VARIABLE .)
+    RETURN          reduce using rule 14 (operation -> VARIABLE . VARIABLE = VARIABLE . VARIABLE + VARIABLE .)
+    }               reduce using rule 14 (operation -> VARIABLE . VARIABLE = VARIABLE . VARIABLE + VARIABLE .)
+
+
+state 58
+
+    (15) function -> DEF VARIABLE ( variables ) { statements RETURN VARIABLE . }
+
+    }               shift and go to state 59
+
+
+state 59
+
+    (15) function -> DEF VARIABLE ( variables ) { statements RETURN VARIABLE } .
+
+    VARIABLE        reduce using rule 15 (function -> DEF VARIABLE ( variables ) { statements RETURN VARIABLE } .)
+    DEF             reduce using rule 15 (function -> DEF VARIABLE ( variables ) { statements RETURN VARIABLE } .)
+    CLASS           reduce using rule 15 (function -> DEF VARIABLE ( variables ) { statements RETURN VARIABLE } .)
+    $end            reduce using rule 15 (function -> DEF VARIABLE ( variables ) { statements RETURN VARIABLE } .)
+    }               reduce using rule 15 (function -> DEF VARIABLE ( variables ) { statements RETURN VARIABLE } .)
+    RETURN          reduce using rule 15 (function -> DEF VARIABLE ( variables ) { statements RETURN VARIABLE } .)
+
